@@ -1,3 +1,5 @@
+fun square(x)=x*x;
+
 fun rec_factorial(n)=
     if n=0 then 1
     else n*factorial(n-1);
@@ -21,20 +23,20 @@ fun iter_pow(x,n)=
       iter(1,n,0)
     end;
 
-(*fun iter_pow_logn(x,n)=
+fun iter_pow_logn(x,n)=
     let
-      fun iter(f,m,i)=
-          if m=i then f
-          else iter(square(f*x,m,i+1));
+      fun iter(res,new_x,m)=
+          if m=0 then res
+          else if (m mod 2)=1 then iter(res*new_x,square(new_x),m div 2)
+          else iter(res,square(new_x),m div 2);
     in
-      iter(1,n,0)
-    end;*)
+      iter(1,x,n)
+    end;
 
 fun power(x,n)=
     if n=0 then 1
     else x*power(x,n);
 
-fun square(x)=x*x;
 
 fun power_logn(x,n)=
     if n=0 then 1
